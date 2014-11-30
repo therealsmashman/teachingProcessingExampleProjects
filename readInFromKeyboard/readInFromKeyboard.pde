@@ -1,29 +1,30 @@
-
-String guess = "";
+//init the input string
+String keyboardInput = "";
 
 void setup() {
-  // Images must be in the "data" directory to load correctly
-  size(800, 800);
+  size(400, 150);
   background(0);
+  textSize(20);
 }
 
 void draw() {
   background(0);
-  text(guess, 10, 10);
+  text(keyboardInput, 10, 20);
 }
+
+//deal with varius inputs
 void keyPressed() {
   if (key >= 'A' && key <= 'Z') {
-    guess += key ;
-    guess.toLowerCase();
+    keyboardInput += key;
   } 
   else if ((key >= 'a' && key <= 'z') || (key>='0' && key <= '9') ||key ==' ') {
-    guess += key ;
+    keyboardInput += key ;
   }
-  if (key == BACKSPACE && guess.length()>0) {
-    guess= guess.substring(0, guess.length() - 1);
+  if (key == BACKSPACE && keyboardInput.length()>0) {
+    keyboardInput= keyboardInput.substring(0, keyboardInput.length() - 1);
   }
   if (key == ENTER) {
-    guess= guess+ "\n";
+    keyboardInput= keyboardInput+ "\n";
   }
 }
 
