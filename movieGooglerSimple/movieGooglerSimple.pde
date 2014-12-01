@@ -4,10 +4,11 @@ String incorrectMovieTitle = "";
 //flags to set the showing data
 boolean displayResult = false;
 boolean noResult = false;
+//initial text positions
 int textHozPos = 20;
 int textVertPos = 30;
+//global xml object to store query result
 XML movieXML;
-PImage poster;
 String[] attributesToShow = {
   "title", "director", "released", "runtime","genre", "imdbRating", "actors", "awards", "released"
 };
@@ -20,7 +21,6 @@ void draw() {
   background(150);
   if (displayResult) {
     displayResults();
-    drawRestartButton();
   }
   else {
     if (noResult) {
@@ -31,26 +31,30 @@ void draw() {
 }
 
 void displayResults() {
-  int line = 20;
+  int lineVerticalPosition = 20;
+  //iterate through the arributes to show, printing them if they exist and the moving down the screen
   for (int j = 0; j< attributesToShow.length; j=j+1) {
     if (movieXML.hasAttribute(attributesToShow[j])) {
-      drawText(attributesToShow[j].toUpperCase() + " : "+movieXML.getString(attributesToShow[j]), line, 15);
-      line=line + 15;
+      drawText(attributesToShow[j].toUpperCase() + " : "+movieXML.getString(attributesToShow[j]), lineVerticalPosition, 15);
+      lineVerticalPosition=lineVerticalPosition + 15;
     }
   }
+  //load poster image if it exists, same as loading local image, just pass in image location on the web
   if (movieXML.hasAttribute("poster")) {    
-    poster = loadImage(movieXML.getString("poster"));
-    poster.resize(200, 300);
-    image(poster, width-200, 0);
+    PImage poster = loadImage(movieXML.getString("poster"));
+    poster.resize(width/4, height);
+    image(poster, 3*width/4, 0);
   }
+  drawText("***Click on screen to restart***", lineVerticalPosition, 10);
 }
 
 void getData() {
+  //amend string for api call - new string so the enter query stays the same oi the ui
   String movieNameForApi =movieName.replace(" ", "%");
   movieNameForApi = movieNameForApi.trim();
   //load the results from the api call.
   XML xml = parseXML(loadStrings(queryStart + movieNameForApi)[0]);
-  //check for a movie child, then set flags to show the result
+  //check for a movie child, then set flags to show the result or not
   if (xml.getChildren("movie").length > 0) {
     movieXML = xml.getChildren("movie")[0];
     displayResult = true;
@@ -63,11 +67,11 @@ void getData() {
   }
 }
 
-void drawText(String text, int h, int textSize) {
+void drawText(String text, int tesxtVerticalPosition, int textSize) {
   textAlign(TOP, LEFT);
   fill(255);
   textSize(textSize);
-  text(text, textHozPos, textVertPos + h);
+  text(text, textHozPos, textVertPos + tesxtVerticalPosition);
 }
 
 void keyPressed() {
@@ -87,22 +91,9 @@ void keyPressed() {
 }
 
 void mouseReleased() {
-  //reset the query string
-  if (hitRestartButton()) {
+  //reset search if there is an existing result
+  if (displayResult) {
     movieName = "";
     displayResult = false;
   }
-}
-
-boolean hitRestartButton() {
-  return dist(mouseX, mouseY, 50, height - 50)< (40);
-}
-
-void drawRestartButton() {
-  fill(200);
-  ellipse(50, height - 50, 80, 80);
-  fill(0);
-  textAlign(CENTER, CENTER);
-  textSize(20);
-  text("Restart", 50, height - 50);
 }
