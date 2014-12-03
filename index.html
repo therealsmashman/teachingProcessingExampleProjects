@@ -108,6 +108,7 @@ Includes some shaking animation.</p>
   }
 </code></pre>
 
+
 <hr>
 
 <h2>
@@ -125,6 +126,27 @@ Includes some shaking animation.</p>
 <pre><code>quotes  = loadStrings("quotes.txt");
 </code></pre>
 
+<hr>
+
+<h2>
+<a id="number_guesser" class="anchor" href="#number_guesser" aria-hidden="true"><span class="octicon octicon-link"></span></a>Number guesser</h2>
+
+<p>A simple guessing game</p>
+<p>The user has to guess a number between 0 and 20, getting hints of higher or lower on incorrect guesses.
+</p>
+<p><strong>Covers:</strong> Random, simple logic; the draw text and a modified version of the keyboaard input method.</p>
+
+<p><strong>Key concepts:</strong></p>
+
+<p>Converting input strings into numbers (ints) for comparison:</p>
+
+<pre><code>void keyPressed() {
+  if (key >= '0' && key <= '9') {
+    nextGuess = nextGuess *10 + ((int)key -48) ;
+  } 
+  ....
+  }
+</code></pre>
 
 <p><em>Summaries of the rest of the projects coming soon!</em></p>
         </section>
