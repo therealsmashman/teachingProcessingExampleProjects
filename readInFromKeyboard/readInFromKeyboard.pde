@@ -12,7 +12,7 @@ void draw() {
   text(keyboardInput, 10, 20);
 }
 
-//deal with varius inputs
+//deal with various inputs
 void keyPressed() {
   if (key >= 'A' && key <= 'Z') {
     keyboardInput += key;
