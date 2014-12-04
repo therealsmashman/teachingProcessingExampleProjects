@@ -36,7 +36,7 @@
 <p>Each program is designed to be interesting and cover specific sections of programming.</p>
 
 <h2>
-<a id="dice" class="anchor" href="#dice" aria-hidden="true"><span class="octicon octicon-link"></span></a>dice</h2>
+<a id="dice" class="anchor" href="#dice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dice</h2>
 
 <p>Displays a simple dice, that changes number automatically on a timer.
 Includes some shaking animation.</p>
@@ -170,6 +170,103 @@ Includes some shaking animation.</p>
     nextGuess = nextGuess *10 + ((int)key -48) ;
   } 
   ....
+  }
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="carsClassExample" class="anchor" href="#carsClassExample" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cars Class Example</h2>
+
+<p>A simple introduction to classes, using a "Car" class.</p>
+<p>We create two car objects and then make them move at different speeds.
+</p>
+<p><strong>Covers:</strong></p>
+<ul>
+ <li>Classes</li>
+ <li>Objects</li>
+</ul> 
+
+<p><strong>Key concepts:</strong></p>
+
+<p>Creating a new class</p>
+
+<pre><code>class car{
+....
+public car(int inStartHozPos, int inStartVertPoz){
+    carWidth = 40;
+    carHeight = 20;
+    speed = 2;
+    carHozPoz = inStartHozPos;
+    carVertPoz = inStartVertPoz;
+  }
+
+  ....
+  }
+</code></pre>
+
+<p>Creating new objects of that class, and each being a seperate object with different private variables</p>
+
+<pre><code>  //initialize the new car objects.
+  //this calls the "car" constructor
+  car1 = new car(20,20);
+  car2 = new car(20,100);
+  //now we call some of the methods on the car objects.
+  //this will change some of the internal values - like carHeight and speed
+  car1.setSpeed(4);
+  car2.setCarSize(60,40);
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="movieGoogler" class="anchor" href="#movieGoogler" aria-hidden="true"><span class="octicon octicon-link"></span></a>Movie Googler</h2>
+
+<p>User an api to retrieve information about films and tv shows.</p>
+<p>Get a name from the user, then searches on that name, and if a result us found, returns data and a poster image for that result.
+</p>
+<p>Uses the omdbapi api.</p>
+<p>Uses XML rather tahn JSON as its slightly more intuative to understand and Processing supports XML parsing.</p>
+<p><strong>Covers:</strong></p>
+<ul>
+ <li>APIs: as little or as much as you want</li>
+ <li>XML: what it is, structure and parsing</li>
+ <li>String arrays</li>
+ <li>For loops</li>
+ <li>Button using collition detection</li>
+ <li>Null checking</li>
+ <li>Keyboard input</li>
+ <li>Images</li>
+</ul> 
+
+<p><strong>Key concepts:</strong></p>
+
+<p>Calling an API</p>
+
+<pre><code>String queryStart = "http://www.omdbapi.com/?r=xml&t=";
+....
+loadStrings(queryStart + movieNameForApi)[0];
+</code></pre>
+
+<p>Parsing XML result, and null checking</p>
+
+<pre><code>  int line = 20;
+  for (int j = 0; j< attributesToShow.length; j=j+1) {
+    if (movieXML.hasAttribute(attributesToShow[j])) {
+      drawText(attributesToShow[j].toUpperCase() + " : "+movieXML.getString(attributesToShow[j]), line, 15);
+      line=line + 15;
+    }
+  }
+</code></pre>
+
+<p>Loading image from the web</p>
+
+<pre><code>PImage poster;
+....
+if (movieXML.hasAttribute("poster")) {    
+    poster = loadImage(movieXML.getString("poster"));
+    poster.resize(200, 300);
+    image(poster, width-200, 0);
   }
 </code></pre>
 
