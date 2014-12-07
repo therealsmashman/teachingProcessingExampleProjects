@@ -270,6 +270,64 @@ if (movieXML.hasAttribute("poster")) {
   }
 </code></pre>
 
+<hr>
+
+<h2>
+<a id="simpleMusicPlayer" class="anchor" href="#simpleMusicPlayer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Music Player</h2>
+<p>Very simple app that loads a MP3 file and then plays it using the external "Minim" library that comes with processing.</p>
+
+<p><strong>Covers:</strong></p>
+<ul>
+ <li>External libraries - importing and itializing them</li>
+ <li>Loading files</li>
+ <li>Audio players</li>
+</ul> 
+
+<p><strong>Key concepts:</strong></p>
+
+<p>Loading file into a local object and then calling a method on that.</p>
+
+<pre><code>myAudioPlayer = minim.loadFile("cuteShort.mp3");
+....
+myAudioPlayer.play();
+</code></pre>
+
+<hr>
+
+<h2>
+<a id="simpleMusicPlayerWithKeyboardControls" class="anchor" href="#simpleMusicPlayerWithKeyboardControls" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Music Player With Keyboard Controls</h2>
+<p>An extenstion of the Simple Music Player.</p>
+<p>Uses input from the keyboard to pause and play the music.</p>
+<p><strong>Covers:</strong></p>
+<ul>
+ <li>Extyending an exiting program</li>
+ <li>Keyboard input</li>
+ <li>Audio players</li>
+ <li>String manipulation - multiline strings using the newline charecters "\n"</li>
+</ul> 
+
+<p><strong>Key concepts:</strong></p>
+
+<p>Calling pause and play depending on keys pressed.</p>
+
+<pre><code>if (keyPressed) {
+    if (key == 'p') {
+      myAudioPlayer.play();
+    }
+    if (key == 'a') {
+      myAudioPlayer.pause();
+    }
+  }
+</code></pre>
+
+<p>Multiline strings</p>
+
+<pre><code>drawText("Controls: \n"+
+            "'p' to play \n"+
+            "'a' to pause \n" +
+            "the music");
+</code></pre>
+
 <p><em>Summaries of the rest of the projects coming soon!</em></p>
         </section>
 
