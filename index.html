@@ -242,9 +242,9 @@ Includes some shaking animation.</p>
 
 <p>Calling an API</p>
 
-<pre><code>String queryStart = "http://www.omdbapi.com/?r=xml&t=";
-....
-loadStrings(queryStart + movieNameForApi)[0];
+<pre><code><span style="color:#99cf50">String</span> queryStart <span style="color:#e28964">=</span> <span style="color:#65b042">"http://www.omdbapi.com/?r=xml&t="</span>;
+...
+<span style="color:#dad085">loadStrings</span>(queryStart + movieNameForApi)[0];
 </code></pre>
 
 <p>Parsing XML result, and null checking</p>
@@ -260,7 +260,7 @@ loadStrings(queryStart + movieNameForApi)[0];
 
 <p>Loading image from the web</p>
 
-<pre><code><span style="color:#9b859d">PImage</span> poster;
+<pre><code><span style="color:#99cf50">PImage</span> poster;
 .<span style="color:#e28964">.</span><span style="color:#e28964">.</span>.
 <span style="color:#89bdff">if</span> (<span style="color:#3e87e3">movieXML</span>.<span style="color:#3e87e3">hasAttribute</span>("<span style="color:#3e87e3">poster</span>")) {    
     poster <span style="color:#e28964">=</span> <span style="color:#dad085">loadImage</span>(movieXML<span style="color:#e28964">.</span>getString(<span style="color:#65b042">"poster"</span>));
