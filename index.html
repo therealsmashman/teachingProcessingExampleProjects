@@ -51,20 +51,20 @@ Includes some shaking animation.</p>
 
 <p>Getting the number to display on the dice:</p>
 
-<pre><code>number = (int)random(1, 7);
+<pre><code>number <span style="color:#e28964">=</span> (<span style="color:#99cf50">int</span>)<span style="color:#dad085">random</span>(<span style="color:#3387cc">1</span>, <span style="color:#3387cc">7</span>);
 </code></pre>
 
 <p>Drawing different dice faces depending on the number to be shown on the dice:</p>
 
-<pre><code>switch(number) {
-  case 1: 
-    ellipse(diceCenterHos, diceCenterVert, 20, 20);
-    break;
-  case 2:
-    ellipse(diceCenterHos -20, diceCenterVert, 20, 20);
-    ellipse(diceCenterHos +20, diceCenterVert, 20, 20);
-    break;
-    .....
+<pre><code><span style="color:#89bdff">switch</span>(<span style="color:#3e87e3">number</span>) {
+  <span style="color:#e28964">case</span> <span style="color:#3387cc">1</span><span style="color:#e28964">:</span> 
+    <span style="color:#dad085">ellipse</span>(diceCenterHos, diceCenterVert, <span style="color:#3387cc">20</span>, <span style="color:#3387cc">20</span>);
+    <span style="color:#e28964">break</span>;
+  <span style="color:#e28964">case</span> <span style="color:#3387cc">2</span><span style="color:#e28964">:</span>
+    <span style="color:#dad085">ellipse</span>(diceCenterHos <span style="color:#e28964">-</span><span style="color:#3387cc">20</span>, diceCenterVert, <span style="color:#3387cc">20</span>, <span style="color:#3387cc">20</span>);
+    <span style="color:#dad085">ellipse</span>(diceCenterHos <span style="color:#e28964">+</span><span style="color:#3387cc">20</span>, diceCenterVert, <span style="color:#3387cc">20</span>, <span style="color:#3387cc">20</span>);
+    <span style="color:#e28964">break</span>;
+    ...
 }
 </code></pre>
 
@@ -72,7 +72,7 @@ Includes some shaking animation.</p>
 </blockquote>
 
 <h2>
-<a id="roll-with-button" class="anchor" href="#roll-with-button" aria-hidden="true"><span class="octicon octicon-link"></span></a>roll with button</h2>
+<a id="roll-with-button" class="anchor" href="#roll-with-button" aria-hidden="true"><span class="octicon octicon-link"></span></a>Roll with button</h2>
 
 <p>An extension of the dice program, for students who have finished that early. Uses user input to trigger a new roll of the dice.</p>
 
@@ -85,8 +85,8 @@ Includes some shaking animation.</p>
 
 <p>Checking whether the user has clicked on a button.</p>
 
-<pre><code>void mouseReleased() {
-  if(dist(mouseX, mouseY, buttonCenter, buttonCenter)&lt; 50){
+<pre><code><span style="color:#99cf50">void</span> <span style="color:#89bdff">mouseReleased</span>() {
+  <span style="color:#e28964">if</span>(<span style="color:#dad085">dist</span>(<span style="color:#3e87e3">mouseX</span>, <span style="color:#3e87e3">mouseY</span>, buttonCenter, buttonCenter)<span style="color:#e28964">&lt;</span> <span style="color:#3387cc">50</span>){
     roll();
   }
 }
@@ -114,11 +114,11 @@ Includes some shaking animation.</p>
 
 <p>Adding pressed keys to a string:</p>
 
-<pre><code>void keyPressed() {
-  if (key >= 'a' && key <= 'z') {
-    keyboardInput += key;
+<pre><code><span style="color:#99cf50">void</span> <span style="color:#89bdff">keyPressed</span>() {
+  <span style="color:#e28964">if</span> (<span style="color:#3e87e3">key</span> <span style="color:#e28964">>=</span> <span style="color:#65b042">'a'</span> <span style="color:#e28964">&amp;&amp;</span> <span style="color:#3e87e3">key</span> <span style="color:#e28964">&lt;=</span> <span style="color:#65b042">'z'</span>) {
+    keyboardInput <span style="color:#e28964">+=</span> <span style="color:#3e87e3">key</span>;
   } 
-  ....
+  ...
   }
 </code></pre>
 
@@ -142,7 +142,7 @@ Includes some shaking animation.</p>
 
 <p>Loading strings line by line from a file:</p>
 
-<pre><code>quotes  = loadStrings("quotes.txt");
+<pre><code>quotes  <span style="color:#e28964">=</span> <span style="color:#dad085">loadStrings</span>(<span style="color:#65b042">"quotes.txt"</span>);
 </code></pre>
 
 <hr>
@@ -165,11 +165,11 @@ Includes some shaking animation.</p>
 
 <p>Converting input strings into numbers (ints) for comparison:</p>
 
-<pre><code>void keyPressed() {
-  if (key >= '0' && key <= '9') {
-    nextGuess = nextGuess *10 + ((int)key -48) ;
+<pre><code><span style="color:#99cf50">void</span> <span style="color:#89bdff">keyPressed</span>() {
+  <span style="color:#e28964">if</span> (<span style="color:#3e87e3">key</span> <span style="color:#e28964">>=</span> <span style="color:#65b042">'0'</span> <span style="color:#e28964">&amp;&amp;</span> <span style="color:#3e87e3">key</span> <span style="color:#e28964">&lt;=</span> <span style="color:#65b042">'9'</span>) {
+    nextGuess <span style="color:#e28964">=</span> nextGuess <span style="color:#e28964">*</span><span style="color:#3387cc">10</span> <span style="color:#e28964">+</span> ((<span style="color:#99cf50">int</span>)<span style="color:#3e87e3">key</span> <span style="color:#e28964">-</span><span style="color:#3387cc">48</span>) ;
   } 
-  ....
+  ...
   }
 </code></pre>
 
@@ -191,30 +191,29 @@ Includes some shaking animation.</p>
 
 <p>Creating a new class</p>
 
-<pre><code>class car{
-....
-public car(int inStartHozPos, int inStartVertPoz){
-    carWidth = 40;
-    carHeight = 20;
-    speed = 2;
-    carHozPoz = inStartHozPos;
-    carVertPoz = inStartVertPoz;
+<pre><code><span style="color:#99cf50">class</span> <span style="text-decoration:underline">car</span>{
+.<span style="color:#e28964">.</span><span style="color:#e28964">.</span>.
+<span style="color:#99cf50">public</span> <span style="color:#89bdff">car</span>(<span style="color:#99cf50">int</span> <span style="color:#3e87e3">inStartHozPos</span>, <span style="color:#99cf50">int</span> <span style="color:#3e87e3">inStartVertPoz</span>){
+    carWidth <span style="color:#e28964">=</span> <span style="color:#3387cc">40</span>;
+    carHeight <span style="color:#e28964">=</span> <span style="color:#3387cc">20</span>;
+    speed <span style="color:#e28964">=</span> <span style="color:#3387cc">2</span>;
+    carHozPoz <span style="color:#e28964">=</span> inStartHozPos;
+    carVertPoz <span style="color:#e28964">=</span> inStartVertPoz;
   }
-
-  ....
+  ...
   }
 </code></pre>
 
 <p>Creating new objects of that class, and each being a seperate object with different private variables</p>
 
-<pre><code>  //initialize the new car objects.
-  //this calls the "car" constructor
-  car1 = new car(20,20);
-  car2 = new car(20,100);
-  //now we call some of the methods on the car objects.
-  //this will change some of the internal values - like carHeight and speed
-  car1.setSpeed(4);
-  car2.setCarSize(60,40);
+<pre><code><span style="color:#aeaeae;font-style:italic">//initialize the new car objects.</span>
+  <span style="color:#aeaeae;font-style:italic">//this calls the "car" constructor</span>
+  car1 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> car(<span style="color:#3387cc">20</span>,<span style="color:#3387cc">20</span>);
+  car2 <span style="color:#e28964">=</span> <span style="color:#e28964">new</span> car(<span style="color:#3387cc">20</span>,<span style="color:#3387cc">100</span>);
+  <span style="color:#aeaeae;font-style:italic">//now we call some of the methods on the car objects.</span>
+  <span style="color:#aeaeae;font-style:italic">//this will change some of the internal values - like carHeight and speed</span>
+  car1<span style="color:#e28964">.</span>setSpeed(<span style="color:#3387cc">4</span>);
+  car2<span style="color:#e28964">.</span>setCarSize(<span style="color:#3387cc">60</span>,<span style="color:#3387cc">40</span>);
 </code></pre>
 
 <hr>
@@ -250,23 +249,23 @@ loadStrings(queryStart + movieNameForApi)[0];
 
 <p>Parsing XML result, and null checking</p>
 
-<pre><code>  int line = 20;
-  for (int j = 0; j< attributesToShow.length; j=j+1) {
-    if (movieXML.hasAttribute(attributesToShow[j])) {
-      drawText(attributesToShow[j].toUpperCase() + " : "+movieXML.getString(attributesToShow[j]), line, 15);
-      line=line + 15;
+<pre><code><span style="color:#99cf50">int</span> line <span style="color:#e28964">=</span> <span style="color:#3387cc">20</span>;
+  <span style="color:#89bdff">for</span> (<span style="color:#99cf50">int</span> <span style="color:#3e87e3">j</span> = <span style="color:#3e87e3">0</span>; <span style="color:#3e87e3">j</span>&lt; <span style="color:#3e87e3">attributesToShow</span>.<span style="color:#3e87e3">length</span>; <span style="color:#3e87e3">j</span>=<span style="color:#3e87e3">j</span>+<span style="color:#3e87e3">1</span>) {
+    <span style="color:#e28964">if</span> (movieXML<span style="color:#e28964">.</span>hasAttribute(attributesToShow[j])) {
+      drawText(attributesToShow[j]<span style="color:#e28964">.</span>toUpperCase() <span style="color:#e28964">+</span> <span style="color:#65b042">" : "</span><span style="color:#e28964">+</span>movieXML<span style="color:#e28964">.</span>getString(attributesToShow[j]), line, <span style="color:#3387cc">15</span>);
+      line<span style="color:#e28964">=</span>line <span style="color:#e28964">+</span> <span style="color:#3387cc">15</span>;
     }
   }
 </code></pre>
 
 <p>Loading image from the web</p>
 
-<pre><code>PImage poster;
-....
-if (movieXML.hasAttribute("poster")) {    
-    poster = loadImage(movieXML.getString("poster"));
-    poster.resize(200, 300);
-    image(poster, width-200, 0);
+<pre><code><span style="color:#9b859d">PImage</span> poster;
+.<span style="color:#e28964">.</span><span style="color:#e28964">.</span>.
+<span style="color:#89bdff">if</span> (<span style="color:#3e87e3">movieXML</span>.<span style="color:#3e87e3">hasAttribute</span>("<span style="color:#3e87e3">poster</span>")) {    
+    poster <span style="color:#e28964">=</span> <span style="color:#dad085">loadImage</span>(movieXML<span style="color:#e28964">.</span>getString(<span style="color:#65b042">"poster"</span>));
+    poster<span style="color:#e28964">.</span>resize(<span style="color:#3387cc">200</span>, <span style="color:#3387cc">300</span>);
+    <span style="color:#dad085">image</span>(poster, <span style="color:#3e87e3">width</span><span style="color:#e28964">-</span><span style="color:#3387cc">200</span>, <span style="color:#3387cc">0</span>);
   }
 </code></pre>
 
@@ -287,9 +286,9 @@ if (movieXML.hasAttribute("poster")) {
 
 <p>Loading file into a local object and then calling a method on that.</p>
 
-<pre><code>myAudioPlayer = minim.loadFile("cuteShort.mp3");
-....
-myAudioPlayer.play();
+<pre><code>myAudioPlayer <span style="color:#e28964">=</span> minim<span style="color:#e28964">.</span>loadFile(<span style="color:#65b042">"cuteShort.mp3"</span>);
+...
+myAudioPlayer<span style="color:#e28964">.</span>play();
 </code></pre>
 
 <hr>
@@ -310,22 +309,22 @@ myAudioPlayer.play();
 
 <p>Calling pause and play depending on keys pressed.</p>
 
-<pre><code>if (keyPressed) {
-    if (key == 'p') {
-      myAudioPlayer.play();
+<pre><code><span style="color:#89bdff">if</span> (<span style="color:#3e87e3">keyPressed</span>) {
+    <span style="color:#e28964">if</span> (<span style="color:#3e87e3">key</span> <span style="color:#e28964">==</span> <span style="color:#65b042">'p'</span>) {
+      myAudioPlayer<span style="color:#e28964">.</span>play();
     }
-    if (key == 'a') {
-      myAudioPlayer.pause();
+    <span style="color:#e28964">if</span> (<span style="color:#3e87e3">key</span> <span style="color:#e28964">==</span> <span style="color:#65b042">'a'</span>) {
+      myAudioPlayer<span style="color:#e28964">.</span>pause();
     }
   }
 </code></pre>
 
 <p>Multiline strings</p>
 
-<pre><code>drawText("Controls: \n"+
-            "'p' to play \n"+
-            "'a' to pause \n" +
-            "the music");
+<pre><code>drawText(<span style="color:#65b042">"Controls: <span style="color:#ddf2a4">\n</span>"</span><span style="color:#e28964">+</span>
+            <span style="color:#65b042">"'p' to play <span style="color:#ddf2a4">\n</span>"</span><span style="color:#e28964">+</span>
+            <span style="color:#65b042">"'a' to pause <span style="color:#ddf2a4">\n</span>"</span> <span style="color:#e28964">+</span>
+            <span style="color:#65b042">"the music"</span>);
 </code></pre>
 
 <p><em>Summaries of the rest of the projects coming soon!</em></p>
