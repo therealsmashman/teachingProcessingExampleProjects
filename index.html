@@ -327,6 +327,87 @@ myAudioPlayer<span style="color:#e28964">.</span>play();
             <span style="color:#65b042">"the music"</span>);
 </code></pre>
 
+<hr>
+
+<h2>
+<a id="musicPlayer1" class="anchor" href="#musicPlayer1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Music Player</h2>
+<p>Final version of the music player</p>
+<p>Has many functions, some of which can be added individually to the simple music players by advanced students</p>
+<p><strong>Covers:</strong></p>
+<ul>
+ <li>Buttons (mouse UI input)</li>
+ <li>Automatically playing next file</li>
+ <li>Showing file meta data</li>
+ <li>File selection form the UI</li>
+ <li>Shuffle</li>
+ <li>Looping</li>
+ <li>Graphing pitch</li>
+</ul> 
+
+<p><strong>Key concepts:</strong></p>
+
+<p>Loading an dshowing metadata.</p>
+
+<pre><code>AudioMetaData meta;
+...
+meta = player.getMetaData();
+...
+<span style="color:#99cf50">void</span> <span style="color:#89bdff">drawInfo</span>() {
+...
+	  <span style="color:#aeaeae;font-style:italic">//only show populated metadata</span>
+	  <span style="color:#89bdff">if</span> (<span style="color:#3e87e3">meta</span>.<span style="color:#3e87e3">title</span>() !="") {
+		<span style="color:#dad085">text</span>(<span style="color:#65b042">"TITLE: "</span> <span style="color:#e28964">+</span> meta<span style="color:#e28964">.</span>title(), infoHozPos, localInVertPos<span style="color:#e28964">+=</span>lineHeight);
+	  }
+	  <span style="color:#89bdff">if</span> (<span style="color:#3e87e3">meta</span>.<span style="color:#3e87e3">author</span>() !="") {
+		<span style="color:#dad085">text</span>(<span style="color:#65b042">"AUTHER: "</span> <span style="color:#e28964">+</span> meta<span style="color:#e28964">.</span>author(), infoHozPos, localInVertPos<span style="color:#e28964">+=</span>lineHeight);
+	  }
+}
+</code></pre>
+
+<p>Loading new MP3 files</p>
+
+<pre><code><span style="color:#99cf50">void</span> <span style="color:#89bdff">loadNewSongs</span>() {
+  <span style="color:#e28964">if</span> (fileName) {
+    fileName<span style="color:#e28964">=</span><span style="color:#3387cc">false</span>; 
+    <span style="color:#dad085">selectInput</span>(<span style="color:#65b042">"Select a mp3 to add to the playlist:"</span>, <span style="color:#65b042">"trackSelected"</span>);
+  }
+  <span style="color:#e28964">else</span> {
+    fileName<span style="color:#e28964">=</span><span style="color:#3387cc">true</span>;
+  }
+}
+
+<span style="color:#99cf50">void</span> <span style="color:#89bdff">trackSelected</span>(<span style="color:#99cf50">File</span> <span style="color:#3e87e3">selection</span>) {
+  <span style="color:#e28964">if</span> (selection <span style="color:#e28964">==</span> <span style="color:#3387cc">null</span>) {
+    showErrorMessage(<span style="color:#65b042">"Window was closed or the user hit cancel."</span>);
+  } 
+  <span style="color:#e28964">else</span> {
+    <span style="color:#99cf50">String</span> path <span style="color:#e28964">=</span> selection<span style="color:#e28964">.</span>getAbsolutePath();
+    path <span style="color:#e28964">=</span> path<span style="color:#e28964">.</span>replace(<span style="color:#65b042">"<span style="color:#ddf2a4">\\</span>"</span>, <span style="color:#65b042">"<span style="color:#ddf2a4">\\</span><span style="color:#ddf2a4">\\</span>"</span>);
+    <span style="color:#99cf50">String</span> title <span style="color:#e28964">=</span> <span style="color:#dad085">split</span>(path, <span style="color:#65b042">'<span style="color:#ddf2a4">\\</span>'</span>)[<span style="color:#dad085">split</span>(path, <span style="color:#65b042">'<span style="color:#ddf2a4">\\</span>'</span>)<span style="color:#e28964">.</span>length <span style="color:#e28964">-</span><span style="color:#3387cc">1</span>];
+    <span style="color:#e28964">if</span> (<span style="color:#e28964">!</span><span style="color:#dad085">split</span>(title, <span style="color:#65b042">'.'</span>)[<span style="color:#3387cc">1</span>]<span style="color:#e28964">.</span>toLowerCase()<span style="color:#e28964">.</span>equals(<span style="color:#65b042">"mp3"</span>)) {
+      showErrorMessage(<span style="color:#65b042">"Not MP3 file"</span>);
+    }
+    <span style="color:#e28964">else</span> {
+      playList<span style="color:#e28964">.</span>append(path);
+      fileName<span style="color:#e28964">=</span><span style="color:#3387cc">true</span>;
+    }
+  }
+}
+</code></pre>
+
+<p>Drawing pitch</p>
+
+<pre><code><span style="color:#89bdff">if</span> (<span style="color:#3e87e3">player</span>.<span style="color:#3e87e3">isPlaying</span>()) {
+    <span style="color:#e28964">for</span> (<span style="color:#99cf50">int</span> i <span style="color:#e28964">=</span> <span style="color:#3387cc">0</span>; i <span style="color:#e28964">&lt;</span> player<span style="color:#e28964">.</span>bufferSize() <span style="color:#e28964">-</span> <span style="color:#3387cc">1</span>; i<span style="color:#e28964">++</span>)
+    {
+      <span style="color:#99cf50">float</span> x1 <span style="color:#e28964">=</span> <span style="color:#dad085">map</span>( i, <span style="color:#3387cc">0</span>, player<span style="color:#e28964">.</span>bufferSize(), loadIconHoz<span style="color:#e28964">-</span><span style="color:#3387cc">145</span>, loadIconHoz<span style="color:#e28964">+</span><span style="color:#3387cc">195</span> );
+      <span style="color:#99cf50">float</span> x2 <span style="color:#e28964">=</span> <span style="color:#dad085">map</span>( i<span style="color:#e28964">+</span><span style="color:#3387cc">1</span>, <span style="color:#3387cc">0</span>, player<span style="color:#e28964">.</span>bufferSize(), loadIconHoz<span style="color:#e28964">-</span><span style="color:#3387cc">145</span>, loadIconHoz<span style="color:#e28964">+</span><span style="color:#3387cc">195</span> );
+      <span style="color:#dad085">line</span>( x1, <span style="color:#3387cc">40</span> <span style="color:#e28964">+</span> player<span style="color:#e28964">.</span>left<span style="color:#e28964">.</span>get(i)<span style="color:#e28964">*</span><span style="color:#3387cc">25</span>, x2, <span style="color:#3387cc">40</span> <span style="color:#e28964">+</span> player<span style="color:#e28964">.</span>left<span style="color:#e28964">.</span>get(i<span style="color:#e28964">+</span><span style="color:#3387cc">1</span>)<span style="color:#e28964">*</span><span style="color:#3387cc">25</span> );
+      <span style="color:#dad085">line</span>( x1, <span style="color:#3387cc">90</span> <span style="color:#e28964">+</span> player<span style="color:#e28964">.</span>right<span style="color:#e28964">.</span>get(i)<span style="color:#e28964">*</span><span style="color:#3387cc">25</span>, x2, <span style="color:#3387cc">90</span> <span style="color:#e28964">+</span> player<span style="color:#e28964">.</span>right<span style="color:#e28964">.</span>get(i<span style="color:#e28964">+</span><span style="color:#3387cc">1</span>)<span style="color:#e28964">*</span><span style="color:#3387cc">25</span> );
+    }
+  }
+</code></pre>
+
 <p><em>Summaries of the rest of the projects coming soon!</em></p>
         </section>
 
