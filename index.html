@@ -354,13 +354,13 @@ meta = player.getMetaData();
 ...
 <span style="color:#99cf50">void</span> <span style="color:#89bdff">drawInfo</span>() {
 ...
-	  <span style="color:#aeaeae;font-style:italic">//only show populated metadata</span>
-	  <span style="color:#89bdff">if</span> (<span style="color:#3e87e3">meta</span>.<span style="color:#3e87e3">title</span>() !="") {
-		<span style="color:#dad085">text</span>(<span style="color:#65b042">"TITLE: "</span> <span style="color:#e28964">+</span> meta<span style="color:#e28964">.</span>title(), infoHozPos, localInVertPos<span style="color:#e28964">+=</span>lineHeight);
-	  }
-	  <span style="color:#89bdff">if</span> (<span style="color:#3e87e3">meta</span>.<span style="color:#3e87e3">author</span>() !="") {
-		<span style="color:#dad085">text</span>(<span style="color:#65b042">"AUTHER: "</span> <span style="color:#e28964">+</span> meta<span style="color:#e28964">.</span>author(), infoHozPos, localInVertPos<span style="color:#e28964">+=</span>lineHeight);
-	  }
+  <span style="color:#aeaeae;font-style:italic">//only show populated metadata</span>
+  <span style="color:#89bdff">if</span> (<span style="color:#3e87e3">meta</span>.<span style="color:#3e87e3">title</span>() !="") {
+    <span style="color:#dad085">text</span>(<span style="color:#65b042">"TITLE: "</span> <span style="color:#e28964">+</span> meta<span style="color:#e28964">.</span>title(), infoHozPos, localInVertPos<span style="color:#e28964">+=</span>lineHeight);
+  }
+  <span style="color:#89bdff">if</span> (<span style="color:#3e87e3">meta</span>.<span style="color:#3e87e3">author</span>() !="") {
+    <span style="color:#dad085">text</span>(<span style="color:#65b042">"AUTHER: "</span> <span style="color:#e28964">+</span> meta<span style="color:#e28964">.</span>author(), infoHozPos, localInVertPos<span style="color:#e28964">+=</span>lineHeight);
+  }
 }
 </code></pre>
 
