@@ -32,7 +32,7 @@ void draw() {
 
 void displayResults() {
   int lineVerticalPosition = 20;
-  //iterate through the arributes to show, printing them if they exist and the moving down the screen
+  //iterate through the arributes we want to show, printing them if they exist and the moving down the screen
   for (int j = 0; j< attributesToShow.length; j=j+1) {
     if (movieXML.hasAttribute(attributesToShow[j])) {
       drawText(attributesToShow[j].toUpperCase() + " : "+movieXML.getString(attributesToShow[j]), lineVerticalPosition, 15);
@@ -41,11 +41,12 @@ void displayResults() {
   }
   //load poster image if it exists, same as loading local image, just pass in image location on the web
   if (movieXML.hasAttribute("poster")) {    
+    //load the poster from the address stored in the XML
     PImage poster = loadImage(movieXML.getString("poster"));
+    //resize and show the resultant image
     poster.resize(width/4, height);
     image(poster, 3*width/4, 0);
   }
-  drawText("***Click on screen to restart***", lineVerticalPosition, 10);
 }
 
 void getData() {
@@ -53,7 +54,7 @@ void getData() {
   String movieNameForApi =movieName.replace(" ", "%");
   movieNameForApi = movieNameForApi.trim();
   //load the results from the api call.
-  XML xml = parseXML(loadStrings(queryStart + movieNameForApi)[0]);
+  XML xml = loadXML(queryStart + movieNameForApi);
   //check for a movie child, then set flags to show the result or not
   if (xml.getChildren("movie").length > 0) {
     movieXML = xml.getChildren("movie")[0];
@@ -73,7 +74,7 @@ void drawText(String text, int tesxtVerticalPosition, int textSize) {
   textSize(textSize);
   text(text, textHozPos, textVertPos + tesxtVerticalPosition);
 }
-
+//use existing keyboard input logic, includes backspace and action on enter
 void keyPressed() {
   if (key >= 'A' && key <= 'Z') {
     movieName += key ;
@@ -87,13 +88,5 @@ void keyPressed() {
   }
   if (key == ENTER) {
     getData();
-  }
-}
-
-void mouseReleased() {
-  //reset search if there is an existing result
-  if (displayResult) {
-    movieName = "";
-    displayResult = false;
   }
 }

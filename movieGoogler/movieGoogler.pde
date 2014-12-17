@@ -64,10 +64,11 @@ void getData() {
   println("Full call is: " + queryStart + movieNameForApi);
   println(loadStrings(queryStart + movieNameForApi));
   println(loadStrings(queryStart + movieNameForApi).length);
-  XML xml = parseXML(loadStrings(queryStart + movieNameForApi)[0]);
+  XML xml = loadXML(queryStart + movieNameForApi);
   println(xml);
   println("--------------");
-  if (xml.getChildren("movie").length > 0) {
+  println("response is: "+xml.getString("response"));
+  if (xml.getString("response").equals("True")) {
     movieXML = xml.getChildren("movie")[0];
     String [] attributes = movieXML.listAttributes();
     for (int i =0; i < attributes.length; i = i+1) {
