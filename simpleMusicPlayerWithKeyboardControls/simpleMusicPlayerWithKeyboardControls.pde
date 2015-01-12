@@ -31,6 +31,7 @@ void draw() {
   drawText("Controls: \n"+
             "'p' to play \n"+
             "'a' to pause \n" +
+            "'s' to rewind \n" +
             "the music");
   //check for new input from there user
   playerControls() ;
@@ -45,6 +46,9 @@ void playerControls() {
     }
     if (key == 'a') {
       myAudioPlayer.pause();
+    }
+    if (key == 's') {
+      myAudioPlayer.rewind();
     }
   }
 }
