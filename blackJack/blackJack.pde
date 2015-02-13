@@ -11,6 +11,7 @@ StringList playerCards;
 boolean gameOver;
 int totalScore;
 boolean playerWon;
+int winningScore = 2;
 
 void setup() {
   size(800, 400);
@@ -232,6 +233,6 @@ void drawComputerLostScreen() {
   println("You Won! ");
   println("Your score "+playerScore);
   println("Computer score "+computerScore);
-  totalScore = totalScore + 2;
+  totalScore = totalScore + winningScore;
 }
 
