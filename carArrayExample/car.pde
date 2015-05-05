@@ -1,4 +1,4 @@
-class car{
+class Car{
   //these are variables that are attached to each object of 
   //type car. The are all named the same - but are all unique to
   //each object. Like everyone has a "name", but everyones name is
@@ -12,7 +12,7 @@ class car{
   //this is the "constructor", its what is called to make a new object.
   //it can be called many times to create many different object, all with 
   //different variables attached to them
-  public car(int inStartHozPos, int inStartVertPoz){
+  public Car(int inStartHozPos, int inStartVertPoz){
     //set the default width, height and speed (these can be changed, see below)
     carWidth = 40;
     carHeight = 20;
@@ -27,21 +27,13 @@ class car{
     speed = inSpeed;
   }
   
- //set custom widths and height of this car object.
   public void setCarSize(int inCarWidth, int inCarHeight){
     carWidth = inCarWidth;
     carHeight = inCarHeight;
   }
   
-  // draw the car.
   public void drawCar(){
     carHozPoz = carHozPoz+speed;
     rect(carHozPoz,carVertPoz,carWidth,carHeight);
-  }
-  
-  //fill this in yourself - should retrun true when the car
-  //has gone off the side of the screen.
-  public boolean hasThisCarFinished(){
-    return false; 
   }
 }

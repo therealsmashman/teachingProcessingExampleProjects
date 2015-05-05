@@ -1,3 +1,4 @@
+// we need two car variables
 car car1;
 car car2;
 void setup(){
