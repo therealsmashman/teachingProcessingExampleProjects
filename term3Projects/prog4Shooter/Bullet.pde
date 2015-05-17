@@ -1,7 +1,7 @@
 class Bullet {
   private int speed;
-  private int bulletHozPoz;
-  private int bulletVertPoz;
+  int bulletHozPoz;
+  int bulletVertPoz;
   public Bullet(int initialHosPos, int initialVertPos) {
     bulletHozPoz = initialHosPos;
     bulletVertPoz = initialVertPos;
