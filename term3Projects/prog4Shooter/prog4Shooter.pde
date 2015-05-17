@@ -27,6 +27,7 @@ void draw() {
     }
     renderBullets();
     renderAliens();
+    drawTurret();
   }
 }
 void endGameScreen() {
@@ -62,9 +63,19 @@ void renderAliens() {
     }
   }
 }
+
+void drawTurret(){
+  fill(100);
+  rect(mouseX,height - 20, 60,40,20,20,0,0);
+  fill(0,0,255);
+  ellipse(mouseX,height, 60,60);
+  fill(200);
+  rect(mouseX,height - 40, 20,60,5,5,10,10);
+  
+}
 void keyReleased() {
   if (bullets.size() < 5) {
-    Bullet newBullet = new Bullet(mouseX, height - 50);
+    Bullet newBullet = new Bullet(mouseX, height - 60);
     bullets.add(newBullet);
   }
 }
