@@ -14,8 +14,8 @@ class Alien {
 
   public void drawAlien() {
     rectMode(CENTER);
-    fill(255);
-    rect(alienHozPoz, alienVertPoz, alienSize*2, alienSize );
+    fill(0,0,255);
+    ellipse(alienHozPoz, alienVertPoz, alienSize*2, alienSize );
     fill( 255 -(100*health),(100*health),0);
     ellipse(alienHozPoz, alienVertPoz, alienSize, alienSize);
     alienHozPoz = alienHozPoz + speed;

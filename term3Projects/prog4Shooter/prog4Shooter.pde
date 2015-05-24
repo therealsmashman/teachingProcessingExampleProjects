@@ -67,7 +67,7 @@ void renderAliens() {
 void drawTurret(){
   fill(100);
   rect(mouseX,height - 20, 60,40,20,20,0,0);
-  fill(0,0,255);
+  fill(255,255,0);
   ellipse(mouseX,height, 60,60);
   fill(200);
   rect(mouseX,height - 40, 20,60,5,5,10,10);
