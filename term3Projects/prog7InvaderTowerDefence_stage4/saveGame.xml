@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<game>
+
+   <invader health="1" hozPos="950" vertPos="350"/>
+   <invader health="3" hozPos="1150" vertPos="150"/>
+   <invader health="2" hozPos="1050" vertPos="250"/>
+
+<player health="5" hozPos="50" vertPos="550" />
+
+	<well hozPos="750" vertPos="150"/>
+	<well hozPos="750" vertPos="250"/>
+	<well hozPos="750" vertPos="350"/>
+	<well hozPos="750" vertPos="450"/>
+
+</game>
